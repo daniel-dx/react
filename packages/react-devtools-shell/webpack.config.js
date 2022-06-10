@@ -40,8 +40,7 @@ const DEVTOOLS_VERSION = getVersionString();
 
 const config = {
   mode: __DEV__ ? 'development' : 'production',
-  // devtool: __DEV__ ? 'cheap-source-map' : 'source-map',
-  devtool: __DEV__ ? 'source-map' : 'source-map',
+  devtool: __DEV__ ? 'cheap-source-map' : 'source-map',
   entry: {
     'app-index': './src/app/index.js',
     'app-devtools': './src/app/devtools.js',
