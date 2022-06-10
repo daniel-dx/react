@@ -40,10 +40,15 @@ const DEVTOOLS_VERSION = getVersionString();
 
 const config = {
   mode: __DEV__ ? 'development' : 'production',
-  devtool: __DEV__ ? 'cheap-source-map' : 'source-map',
+  // devtool: __DEV__ ? 'cheap-source-map' : 'source-map',
+  devtool: __DEV__ ? 'source-map' : 'source-map',
   entry: {
     'app-index': './src/app/index.js',
     'app-devtools': './src/app/devtools.js',
+    'weda-app-devtools': './src/app/weda-devtools.js',
+    'react-devtools-api': './src/app/react-devtools-api.js',
+    'react-devtools-frontend': './src/app/react-devtools-frontend.js',
+    'react-devtools-backend': './src/app/react-devtools-backend.js',
     'e2e-app': './src/e2e/app.js',
     'e2e-devtools': './src/e2e/devtools.js',
     'multi-left': './src/multi/left.js',
@@ -136,6 +141,28 @@ if (TARGET === 'local') {
   config.output = {
     path: resolve(__dirname, 'dist'),
     filename: '[name].js',
+    library: '[name]',
+    libraryTarget: 'umd',
+  };
+  config.externals = {
+    react: {
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'react',
+      root: 'React', // 指向全局变量
+    },
+    'react-dom': {
+      commonjs: 'react-dom',
+      commonjs2: 'react-dom',
+      amd: 'react-dom',
+      root: 'ReactDOM', // 指向全局变量
+    },
+    'react-dom/client': {
+      commonjs: 'react-dom/client',
+      commonjs2: 'react-dom/client',
+      amd: 'react-dom/client',
+      root: 'ReactDOM', // 指向全局变量
+    },
   };
 }
 
