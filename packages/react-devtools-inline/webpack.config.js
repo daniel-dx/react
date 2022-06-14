@@ -116,6 +116,9 @@ module.exports = {
         use: [
           {
             loader: 'style-loader',
+            options: {
+              insertInto: () => (document.querySelector('div[aria-label*="Components"]') && document.querySelector('div[aria-label*="Components"]').firstChild.shadowRoot) || document.head
+            }
           },
           {
             loader: 'css-loader',

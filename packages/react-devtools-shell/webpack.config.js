@@ -1,5 +1,5 @@
 const {resolve} = require('path');
-const {DefinePlugin} = require('webpack');
+const {DefinePlugin, BannerPlugin} = require('webpack');
 const {
   DARK_MODE_DIMMED_WARNING_COLOR,
   DARK_MODE_DIMMED_ERROR_COLOR,
@@ -91,6 +91,11 @@ const config = {
       'process.env.LIGHT_MODE_DIMMED_ERROR_COLOR': `"${LIGHT_MODE_DIMMED_ERROR_COLOR}"`,
       'process.env.LIGHT_MODE_DIMMED_LOG_COLOR': `"${LIGHT_MODE_DIMMED_LOG_COLOR}"`,
     }),
+    // 为了生成的文件在 chrome devtools frontend 项目中不会因为 ts 的检测而报错
+    new BannerPlugin({
+      banner: '// @ts-nocheck',
+      raw: true
+    })
   ],
   module: {
     rules: [

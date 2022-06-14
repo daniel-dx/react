@@ -8,3 +8,9 @@ export function hookNamesModuleLoaderFunction() {
 }
 export const initializeFrontend = _initializeFrontend;
 export const createFrontendBridge = _createFrontendBridge;
+
+export default {
+  hookNamesModuleLoaderFunction,
+  initializeFrontend,
+  createFrontendBridge
+}
