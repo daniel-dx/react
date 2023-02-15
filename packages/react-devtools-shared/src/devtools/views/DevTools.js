@@ -83,6 +83,7 @@ export type Props = {|
   hideToggleSuspenseAction?: boolean,
   hideLogAction?: boolean,
   hideViewSourceAction?: boolean,
+  hideRenderedBy?: boolean,
 
   // This property is used only by the web extension target.
   // The built-in tab UI is hidden in that case, in favor of the browser's own panel tabs.
@@ -142,6 +143,7 @@ export default function DevTools({
   hideToggleSuspenseAction,
   hideLogAction,
   hideViewSourceAction,
+  hideRenderedBy,
 }: Props) {
   const [currentTab, setTab] = useLocalStorage<TabID>(
     LOCAL_STORAGE_DEFAULT_TAB_KEY,
@@ -180,6 +182,7 @@ export default function DevTools({
       hideToggleSuspenseAction: hideToggleSuspenseAction || false,
       hideLogAction: hideLogAction || false,
       hideViewSourceAction: hideViewSourceAction || false,
+      hideRenderedBy: hideRenderedBy || false,
     }),
     [
       readOnly,
@@ -188,6 +191,7 @@ export default function DevTools({
       hideToggleSuspenseAction,
       hideLogAction,
       hideViewSourceAction,
+      hideRenderedBy,
     ],
   );
 

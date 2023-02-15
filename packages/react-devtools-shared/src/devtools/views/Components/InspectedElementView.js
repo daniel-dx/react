@@ -11,7 +11,7 @@ import {copy} from 'clipboard-js';
 import * as React from 'react';
 import {Fragment, useCallback, useContext} from 'react';
 import {TreeDispatcherContext} from './TreeContext';
-import {BridgeContext, ContextMenuContext, StoreContext} from '../context';
+import {BridgeContext, ContextMenuContext, StoreContext, OptionsContext} from '../context';
 import ContextMenu from '../../ContextMenu/ContextMenu';
 import ContextMenuItem from '../../ContextMenu/ContextMenuItem';
 import Button from '../Button';
@@ -76,13 +76,16 @@ export default function InspectedElementView({
     viewAttributeSourceFunction,
   } = useContext<ContextMenuContextType>(ContextMenuContext);
 
+  const {hideRenderedBy} = useContext(OptionsContext);
+
   const rendererLabel =
     rendererPackageName !== null && rendererVersion !== null
       ? `${rendererPackageName}@${rendererVersion}`
       : null;
   const showOwnersList = owners !== null && owners.length > 0;
   const showRenderedBy =
-    showOwnersList || rendererLabel !== null || rootType !== null;
+    !hideRenderedBy &&
+    (showOwnersList || rendererLabel !== null || rootType !== null);
 
   return (
     <Fragment>

@@ -41,9 +41,22 @@ inject('dist/app-index.js', () => {
       browserTheme: 'light',
       enabledInspectedElementContextMenu: true,
       hookNamesModuleLoaderFunction,
-      showTabBar: true,
+      canViewElementSourceFunction: false,
       warnIfLegacyBackendDetected: true,
       warnIfUnsupportedVersionDetected: true,
+
+      // 隐藏 tabbar
+      showTabBar: false,
+      // 隐藏设置
+      hideSettings: true,
+      // 隐藏 Suspend the selected component
+      hideToggleSuspenseAction: true,
+      // 隐藏 Log this component data to the console
+      hideLogAction: true,
+      // 隐藏 View source for this element
+      hideViewSourceAction: true,
+      // 隐藏 renderedBy
+      hideRenderedBy: true
     }),
   );
 });

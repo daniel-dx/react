@@ -39,6 +39,7 @@ export type OptionsContextType = {|
   hideToggleSuspenseAction: boolean,
   hideLogAction: boolean,
   hideViewSourceAction: boolean,
+  hideRenderedBy: boolean,
 |};
 
 export const OptionsContext = createContext<OptionsContextType>({
@@ -48,4 +49,5 @@ export const OptionsContext = createContext<OptionsContextType>({
   hideToggleSuspenseAction: false,
   hideLogAction: false,
   hideViewSourceAction: false,
+  hideRenderedBy: false,
 });
